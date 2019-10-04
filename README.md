@@ -1,4 +1,31 @@
 
+Full docker build of Elasticsearch
+----------------------------------
+- **filebeat** 
+  - netflow
+  - Cisco
+    - Cisco ASA
+        - Cisco FirePower
+      - AWS coming soon
+- **Logstash**
+  - Active Directory logging conf
+  - OpenLdap logging conf
+
+
+**Kibana**
+    - kibana with Xpack
+
+**ElasticSearch**    
+- s3 plugins along with others
+      - Also has xpack
+
+
+This is a single node Elasticsearch, kibana, logstash, filebeat build out/
+
+
+
+
+
 ![Logstash image](https://cdn-images-1.medium.com/max/1200/1*yXEVUP1oFpI_xauThcdTAg.png)
 
 LogStash and MatLab Grok patters
