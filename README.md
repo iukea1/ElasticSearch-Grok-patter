@@ -1,5 +1,5 @@
 
-Full docker build of Elasticsearch
+Full docker build of Elasticsearch 7.4
 ----------------------------------
 - **filebeat** 
   - netflow
