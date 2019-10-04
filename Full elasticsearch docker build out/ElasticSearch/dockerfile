@@ -1,0 +1,11 @@
+FROM docker.elastic.co/elasticsearch/elasticsearch:7.3.0
+
+
+
+
+
+#WORKDIR  /opt/elasticsearch/
+COPY --chown=elasticsearch:elasticsearch elasticsearch.yml /usr/share/elasticsearch/config/elasticsearch.yml
+
+#snampshot and restore plugin
+#RUN bin/elasticsearch-plugin install repository-s3 --batch

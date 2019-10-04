@@ -1,0 +1,58 @@
+FROM docker.elastic.co/logstash/logstash:7.3.0
+LABEL MAINTAINER="roberto cardenas <rcardenas20@gmail.com>"
+
+
+#Removes default Logstash Conf
+#RUN rm -f /usr/share/logstash/pipeline/logstash.conf
+
+
+
+ARG BUILD_DATE
+
+ADD elasticflow.conf /etc/systemd/system/logstash.service.d/elastiflow.conf
+ADD active_directory.conf /etc/logstash/conf.d/
+ 
+#Copies the Logstash.yml file over the defalt Logstash.yml file.
+#This will setup the Netflow Plugin for Logstash
+#RUN rm -f /usr/share/logstash/pipeline/logstash.conf
+#ADD logstash.yml /usr/share/logstash/config/
+#ADD Input_AD.conf /etc/logstash/conf.d/input_AD.conf
+
+
+RUN bin/logstash-plugin install logstash-codec-sflow 
+RUN bin/logstash-plugin update logstash-codec-netflow
+RUN bin/logstash-plugin update logstash-input-udp
+RUN bin/logstash-plugin update logstash-input-tcp
+RUN bin/logstash-plugin update logstash-filter-dns
+RUN bin/logstash-plugin update logstash-filter-geoip
+RUN bin/logstash-plugin update logstash-filter-translate
+RUN bin/logstash-plugin install logstash-input-beats
+RUN bin/logstash-plugin update logstash-filter-ruby
+RUN bin/logstash-plugin update logstash-filter-translate
+RUN bin/logstash-plugin update logstash-filter-cidr
+
+
+WORKDIR /usr/share/logstash/config
+
+COPY --chown=logstash:logstash ./docker_assets/logstash.yml ./
+COPY --chown=logstash:logstash ./docker_assets/pipelines.yml ./
+
+WORKDIR /etc/logstash/elastiflow
+
+
+COPY --chown=logstash:root ./elastiflow ./
+
+
+
+
+
+
+#RUN bin/logstash --modules netflow --setup -M "netflow.var.kibana.ssl.enabled=false"
+#ADD pipelines.conf /etc/logstash/conf.d/
+#WORKDIR /usr/share/logstash/config
+#COPY --chown=logstash:logstash ./docker_assets/pipelines.yml ./
+#COPY --chown=logstash:root ./conf.d ./
+#RUN  bin/logstash-plugin install logstash-codec-netflow
+#ENV ELASTIFLOW_ES_HOST="http://127.0.0.1:9200"
+
+#logstash/conf.d/Input_AD.conf

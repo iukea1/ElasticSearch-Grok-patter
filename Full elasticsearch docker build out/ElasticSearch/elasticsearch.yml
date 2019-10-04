@@ -1,0 +1,13 @@
+cluster.name: Nameyourcluster
+node.name: "node name"
+xpack.ml.enabled: false
+xpack.security.enabled: true
+xpack.license.self_generated.type: basic
+#xpack.security.authc.anonymous.roles: superuser
+#elasticsearch.password: password
+#path:
+#    logs: /data/elk/log
+#    data: /data/elk/data
+http.host: 0.0.0.0
+http.cors.enabled: true
+http.cors.allow-origin: "*"

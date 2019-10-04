@@ -1,0 +1,14 @@
+filebeat.config.inputs:
+  enabled: true
+  path: configs/*.yml
+
+
+  output.elasticsearch:
+  hosts: ["https://localhost:9200"]
+  username: elastic
+  password: AbS090801+1
+  index: "filebeat-%{[agent.version]}-%{+yyyy.MM.dd}"
+setup.kibana:
+  host: "mykibanahost:5601"
+  username: "my_kibana_user"  
+  password: "YOUR_PASSWORD"

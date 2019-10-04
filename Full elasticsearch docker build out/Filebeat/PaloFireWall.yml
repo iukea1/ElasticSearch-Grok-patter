@@ -1,0 +1,5 @@
+- module: panw
+  panos:
+    enabled: true
+    var.syslog_host: 0.0.0.0
+    var.syslog_port: 9002

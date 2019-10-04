@@ -1,0 +1,18 @@
+#xpack.monitoring.enabled: false
+#xpack.monitoring.elasticsearch.hosts: "http://192.168.86.2:9200"
+#xpack.monitoring.elasticsearch.username: elastic
+#xpack.monitoring.elasticsearch.password: password
+#xpack.monitoring.elasticsearch.url: http://127.0.0.1:9200
+
+modules:
+- name: netflow
+  var.elasticsearch.hosts: "127.0.0.1:9200"
+  var.elasticsearch.username: "elastic"
+  var.elasticsearch.password: "password"
+  var.kibana.host: "127.0.0.1:5601"
+  var.kibana.username: "elastic"
+  var.kibana.password: "password"
+  var.input.udp.port: 2055
+
+
+

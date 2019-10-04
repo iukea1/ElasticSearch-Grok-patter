@@ -1,0 +1,5 @@
+- module: cisco
+  asa:
+    var.syslog_host: 0.0.0.0
+    var.syslog_port: 9001
+    var.log_level: 5
